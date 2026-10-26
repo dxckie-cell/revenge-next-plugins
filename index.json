@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "name": "dxckie-cell",
+  "description": "dxckie-cell's plugins for Revenge Next.",
+  "plugins": {
+    "dxckie.better-invites": {
+      "name": "BetterInvites",
+      "description": "See invites expiration date, view inviter profile and preview servers before joining. Long-press a message with an invite link and tap Invite info.",
+      "author": "dxckie-cell (https://github.com/dxckie-cell \"GitHub\")",
+      "contributors": [
+        "iamme",
+        "thororen"
+      ],
+      "icon": "LinkIcon",
+      "channels": {
+        "latest": "1.0.1"
+      },
+      "versions": {
+        "1.0.1": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.better-invites@1.0.1.zip",
+          "sha256": "a4cc1e760b8fb1bdcc4e123936f3f121e62974484e8abedce65acd82f3b2daf8",
+          "size": 2691,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "dxckie.copystatus": {
+      "name": "CopyStatus",
+      "description": "Long-press a user's custom status on their profile to select and copy the text.",
+      "author": "dxckie-cell (https://github.com/dxckie-cell \"GitHub\")",
+      "channels": {
+        "latest": "1.0.2"
+      },
+      "versions": {
+        "1.0.2": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.copystatus@1.0.2.zip",
+          "sha256": "58d8cbd57e22eef238e9778df9d1fbedd40997cefc066247e6cbb3219a25bc37",
+          "size": 1036,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "dxckie.hide-messages": {
+      "name": "HideMessages",
+      "description": "Temporarily hide messages until you restart.",
+      "author": "dxckie-cell (https://github.com/dxckie-cell \"GitHub\")",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.hide-messages@1.0.0.zip",
+          "sha256": "fae3555b7a7de12faf52cdfffe10bbef919c8980093f28d64baddd98046b760c",
+          "size": 1899,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    }
+  }
+}
