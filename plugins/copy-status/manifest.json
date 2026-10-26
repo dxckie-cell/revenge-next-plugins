@@ -1,0 +1,19 @@
+{
+	"format": 1,
+	"id": "dxckie.copystatus",
+	"name": "CopyStatus",
+	"description": "Long-press a user's custom status on their profile to select and copy the text.",
+	"author": "dxckie-cell (https://github.com/dxckie-cell \"GitHub\")",
+	"version": "1.0.2",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1 <2"
+		},
+		"discord": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js"
+	}
+}
