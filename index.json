@@ -6,9 +6,9 @@
     "dev.dxckie-cell.override-server-appearance": {
       "name": "Override Server Appearance",
       "description": "Set a custom icon and banner for any Discord server, only on your device.",
-      "author": "dxckie cell",
+      "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
       "channels": {
-        "latest": "2.0.7"
+        "latest": "2.0.8"
       },
       "versions": {
         "2.0.7": {
@@ -23,25 +23,51 @@
               "version": "*"
             }
           }
+        },
+        "2.0.8": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dev.dxckie-cell.override-server-appearance@2.0.8.zip",
+          "sha256": "7b0806b39916f2b153d525e97ce489581d63006eafe43019603ccef4e65df21f",
+          "size": 2012,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
         }
       }
     },
     "dxckie.better-invites": {
       "name": "BetterInvites",
       "description": "See invites expiration date, view inviter profile and preview servers before joining. Long-press a message with an invite link and tap Invite info.",
-      "author": "dxckie-cell (https://github.com/dxckie-cell \"GitHub\")",
+      "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
       "contributors": [
         "iamme",
         "thororen"
       ],
       "icon": "LinkIcon",
       "channels": {
-        "latest": "1.0.1"
+        "latest": "1.0.2"
       },
       "versions": {
         "1.0.1": {
           "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.better-invites@1.0.1.zip",
           "sha256": "a4cc1e760b8fb1bdcc4e123936f3f121e62974484e8abedce65acd82f3b2daf8",
+          "size": 2691,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.2": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.better-invites@1.0.2.zip",
+          "sha256": "e7ef1c98bd03f1ec77ef7efa3cf2b9ba12feac170438fcb7f8fb006a585b2fab",
           "size": 2691,
           "dependencies": {
             "revenge.api": {
@@ -57,9 +83,9 @@
     "dxckie.clyde-editor": {
       "name": "Clyde Editor",
       "description": "Change Clyde's name, profile picture and banner.",
-      "author": "dxckie cell (https://github.com/dxckie-cell \"GitHub\")",
+      "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
       "channels": {
-        "latest": "1.0.1"
+        "latest": "1.0.2"
       },
       "versions": {
         "1.0.1": {
@@ -74,15 +100,28 @@
               "version": "*"
             }
           }
+        },
+        "1.0.2": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.clyde-editor@1.0.2.zip",
+          "sha256": "1afeaf8b14f849344b5a3536fc2ca50ce58b76bd516bf2e5bd093b6a4e1bded4",
+          "size": 2115,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
         }
       }
     },
     "dxckie.copystatus": {
       "name": "CopyStatus",
       "description": "Long-press a user's custom status on their profile to select and copy the text.",
-      "author": "dxckie-cell (https://github.com/dxckie-cell \"GitHub\")",
+      "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
       "channels": {
-        "latest": "1.0.2"
+        "latest": "1.0.3"
       },
       "versions": {
         "1.0.2": {
@@ -97,15 +136,28 @@
               "version": "*"
             }
           }
+        },
+        "1.0.3": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.copystatus@1.0.3.zip",
+          "sha256": "cbb68b0b75d5632b3fd4745b34cf1b7063449afbe1548389c0261274d49a16e6",
+          "size": 1037,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
         }
       }
     },
     "dxckie.discord-editor": {
       "name": "Discord Editor",
       "description": "Change the official Discord account's name, profile picture and banner.",
-      "author": "dxckie cell (https://github.com/dxckie-cell \"GitHub\")",
+      "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
       "channels": {
-        "latest": "1.0.1"
+        "latest": "1.0.2"
       },
       "versions": {
         "1.0.1": {
@@ -120,20 +172,46 @@
               "version": "*"
             }
           }
+        },
+        "1.0.2": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.discord-editor@1.0.2.zip",
+          "sha256": "aab5e5f6b0583b5f1eea806b3ad37c4ecadf481db29fb5668a678bb6646a617f",
+          "size": 2167,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
         }
       }
     },
     "dxckie.hide-messages": {
       "name": "HideMessages",
       "description": "Temporarily hide messages until you restart.",
-      "author": "dxckie-cell (https://github.com/dxckie-cell \"GitHub\")",
+      "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
       "channels": {
-        "latest": "1.0.0"
+        "latest": "1.0.1"
       },
       "versions": {
         "1.0.0": {
           "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.hide-messages@1.0.0.zip",
           "sha256": "fae3555b7a7de12faf52cdfffe10bbef919c8980093f28d64baddd98046b760c",
+          "size": 1899,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.1": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.hide-messages@1.0.1.zip",
+          "sha256": "b9f678675900b89ec14ff796658e80c5c737a38c4775aa60e9645afaf23e8803",
           "size": 1899,
           "dependencies": {
             "revenge.api": {
@@ -149,10 +227,10 @@
     "dxckie.local-pins": {
       "name": "Local Pins",
       "description": "Pin messages locally and browse them in a channel's Pins tab.",
-      "author": "dxckie cell",
+      "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
       "icon": "PinIcon",
       "channels": {
-        "latest": "1.1.3"
+        "latest": "1.1.4"
       },
       "versions": {
         "1.1.3": {
@@ -167,15 +245,28 @@
               "version": "*"
             }
           }
+        },
+        "1.1.4": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.local-pins@1.1.4.zip",
+          "sha256": "e4e15f219a4427e0d009ee1e4a1fe7f626570a2102ce89ca0c153188f7567157",
+          "size": 5587,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
         }
       }
     },
     "dxckie.override-user-avatars": {
       "name": "Override User Avatars",
       "description": "Allows you to set a custom profile picture for any Discord user.",
-      "author": "dxckie cell (https://github.com/dxckie-cell \"GitHub\")",
+      "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
       "channels": {
-        "latest": "1.0.2"
+        "latest": "1.0.3"
       },
       "versions": {
         "1.0.2": {
@@ -190,20 +281,46 @@
               "version": "*"
             }
           }
+        },
+        "1.0.3": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.override-user-avatars@1.0.3.zip",
+          "sha256": "d26da7fad1b32c8f0cabba623d045ac53831d68cb16f5664fe83618ef97b2b29",
+          "size": 1904,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
         }
       }
     },
     "dxckie.override-user-banners": {
       "name": "Override User Banners",
       "description": "Allows you to set a custom profile banner for any Discord user.",
-      "author": "dxckie-cell (https://github.com/dxckie-cell \"GitHub\")",
+      "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
       "channels": {
-        "latest": "1.0.0"
+        "latest": "1.0.1"
       },
       "versions": {
         "1.0.0": {
           "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.override-user-banners@1.0.0.zip",
           "sha256": "df99310c88fd9d9d8e7506b519bf017560abc23f9c71b557cd386a7c3ef42bc2",
+          "size": 2008,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.1": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.override-user-banners@1.0.1.zip",
+          "sha256": "50d1c760fbb7052873dc4f10f9c01e8c908ec4ead56be22dc28ec597eb8df025",
           "size": 2008,
           "dependencies": {
             "revenge.api": {
