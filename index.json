@@ -270,6 +270,29 @@
         }
       }
     },
+    "dxckie.override-server-appearance": {
+      "name": "Override Server Appearance",
+      "description": "Set a custom icon and banner for any Discord server, only on your device.",
+      "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
+      "channels": {
+        "latest": "2.0.9"
+      },
+      "versions": {
+        "2.0.9": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.override-server-appearance@2.0.9.zip",
+          "sha256": "9777ddd4db0c25e2cb42ac6b39ac72fcf908c035174b707b8b095e1143421505",
+          "size": 2007,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
     "dxckie.override-user-avatars": {
       "name": "Override User Avatars",
       "description": "Allows you to set a custom profile picture for any Discord user.",
