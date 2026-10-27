@@ -4,7 +4,8 @@
 	"name": "Discord Editor",
 	"description": "Change the official Discord account's name, profile picture and banner.",
 	"author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
-	"version": "1.0.2",
+	"icon": "DiscordIcon",
+	"version": "1.0.3",
 	"dependencies": {
 		"revenge.api": {
 			"version": ">=1.2.1 <2"

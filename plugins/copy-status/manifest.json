@@ -4,7 +4,8 @@
 	"name": "CopyStatus",
 	"description": "Long-press a user's custom status on their profile to select and copy the text.",
 	"author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
-	"version": "1.0.3",
+	"icon": "PencilIcon",
+	"version": "1.0.4",
 	"dependencies": {
 		"revenge.api": {
 			"version": ">=1 <2"
