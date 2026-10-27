@@ -1,0 +1,14 @@
+{
+	"format": 1,
+	"id": "dxckie.local-pins",
+	"name": "Local Pins",
+	"description": "Pin messages locally and browse them in a channel's Pins tab.",
+	"author": "dxckie cell",
+	"icon": "PinIcon",
+	"version": "1.1.3",
+	"dependencies": {
+		"revenge.api": { "version": ">=1 <2" },
+		"discord": { "version": "*" }
+	},
+	"dist": { "script": "index.js" }
+}
