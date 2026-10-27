@@ -1,6 +1,7 @@
 import { getModules } from '@revenge-mod/modules/finders'
 import { withProps } from '@revenge-mod/modules/finders/filters'
 import { before, instead } from '@revenge-mod/patcher'
+import { processColor } from 'react-native'
 import { getModuleWithImportedPath } from '@revenge-mod/discord/utils/modules/finders'
 import {
 	getAvatar,
@@ -141,6 +142,16 @@ function patchModule(
 const idOf = (arg: any): string | undefined =>
 	typeof arg === 'string' ? arg : (arg?.id ?? arg?.userId)
 
+// The badge expects native color numbers, not hex strings.
+function toNative(hex: string): number | undefined {
+	try {
+		const value = processColor(hex)
+		return typeof value === 'number' ? value : undefined
+	} catch {
+		return undefined
+	}
+}
+
 // True if any argument looks like a message or author belonging to the account.
 function isTarget(args: any[]): boolean {
 	return args.some(
@@ -194,8 +205,8 @@ function patchMessages(cleanup: Register) {
 							return {
 								...result,
 								...(text && { tagText: text, tagAccessibilityLabel: text }),
-								...(bg && { tagBackgroundColor: bg }),
-								...(fg && { tagTextColor: fg }),
+								...(bg && toNative(bg) !== undefined && { tagBackgroundColor: toNative(bg) }),
+								...(fg && toNative(fg) !== undefined && { tagTextColor: toNative(fg) }),
 								...(verified && { tagVerified: true }),
 							}
 						}),
