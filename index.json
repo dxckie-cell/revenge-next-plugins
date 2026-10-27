@@ -193,9 +193,9 @@
       "name": "Discord Editor",
       "description": "Change the official Discord account's name, profile picture and banner.",
       "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
-      "icon": "StaffBadgeIcon",
+      "icon": "ClydeIcon",
       "channels": {
-        "latest": "1.0.4"
+        "latest": "1.0.5"
       },
       "versions": {
         "1.0.1": {
@@ -241,6 +241,19 @@
           "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.discord-editor@1.0.4.zip",
           "sha256": "24c9488e806b85f017272a7a310f3d003cc51166a773d974d85b7be830359a4a",
           "size": 2184,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.5": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.discord-editor@1.0.5.zip",
+          "sha256": "5dfd2b104fa4b6d991059bd9cfa2f50c632d4f42e2a122f59712591605d6b9c1",
+          "size": 2179,
           "dependencies": {
             "revenge.api": {
               "version": ">=1.2.1 <2"
