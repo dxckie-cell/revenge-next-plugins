@@ -1,7 +1,20 @@
 import { getModules } from '@revenge-mod/modules/finders'
 import { withProps } from '@revenge-mod/modules/finders/filters'
 import { before, instead } from '@revenge-mod/patcher'
-import { getAvatar, getBanner, getName, PLACEHOLDER_HASH, TARGET_ID } from './state'
+import { getModuleWithImportedPath } from '@revenge-mod/discord/utils/modules/finders'
+import {
+	getAvatar,
+	getBadgeBgColor,
+	getBadgeText,
+	getBadgeTextColor,
+	getBanner,
+	getBio,
+	getName,
+	getNameColor,
+	getVerified,
+	PLACEHOLDER_HASH,
+	TARGET_ID,
+} from './state'
 
 type Cleanup = () => unknown
 type Register = (...fns: Cleanup[]) => void
@@ -128,6 +141,73 @@ function patchModule(
 const idOf = (arg: any): string | undefined =>
 	typeof arg === 'string' ? arg : (arg?.id ?? arg?.userId)
 
+// True if any argument looks like a message or author belonging to the account.
+function isTarget(args: any[]): boolean {
+	return args.some(
+		a =>
+			a &&
+			typeof a === 'object' &&
+			(a.authorId === TARGET_ID ||
+				a.id === TARGET_ID ||
+				a.author?.id === TARGET_ID ||
+				a.message?.author?.id === TARGET_ID ||
+				a.message?.authorId === TARGET_ID),
+	)
+}
+
+// Name color and the bot badge shown on the account's chat messages.
+function patchMessages(cleanup: Register) {
+	cleanup(
+		getModuleWithImportedPath<any>('modules/messages/useMessageAuthor.tsx', exports => {
+			try {
+				cleanup(
+					instead(exports, 'getMessageAuthor', (args: any[], original: Original) => {
+						const result = original(...args)
+						const color = getNameColor()
+						return color && result && isTarget(args)
+							? { ...result, colorString: color }
+							: result
+					}),
+				)
+			} catch (e) {
+				console.log('[clyde-editor] could not patch message authors', e)
+			}
+		}),
+	)
+
+	cleanup(
+		getModuleWithImportedPath<any>(
+			'modules/messages/native/renderer/getTagProperties.tsx',
+			exports => {
+				try {
+					cleanup(
+						instead(exports, 'default', (args: any[], original: Original) => {
+							const result = original(...args)
+							if (!isTarget(args)) return result
+
+							const text = getBadgeText()
+							const bg = getBadgeBgColor()
+							const fg = getBadgeTextColor()
+							const verified = getVerified()
+							if (!text && !bg && !fg && !verified) return result
+
+							return {
+								...result,
+								...(text && { tagText: text, tagAccessibilityLabel: text }),
+								...(bg && { tagBackgroundColor: bg }),
+								...(fg && { tagTextColor: fg }),
+								...(verified && { tagVerified: true }),
+							}
+						}),
+					)
+				} catch (e) {
+					console.log('[clyde-editor] could not patch the bot badge', e)
+				}
+			},
+		),
+	)
+}
+
 export function applyPatches(getStore: GetStore, cleanup: Register) {
 	// The user store: renames the account and gives it a placeholder banner.
 	cleanup(
@@ -209,6 +289,8 @@ export function applyPatches(getStore: GetStore, cleanup: Register) {
 			}
 		}),
 	)
+
+	patchMessages(cleanup)
 
 	cleanup(() => {
 		for (const [target, original] of injected) {
