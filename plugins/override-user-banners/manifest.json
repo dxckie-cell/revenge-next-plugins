@@ -3,8 +3,8 @@
 	"id": "dxckie.override-user-banners",
 	"name": "Override User Banners",
 	"description": "Allows you to set a custom profile banner for any Discord user.",
-	"author": "dxckie-cell (https://github.com/dxckie-cell \"GitHub\")",
-	"version": "1.0.0",
+	"author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
+	"version": "1.0.1",
 	"dependencies": {
 		"revenge.api": {
 			"version": ">=1.2.1 <2"
