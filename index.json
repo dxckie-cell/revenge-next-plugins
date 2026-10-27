@@ -95,7 +95,7 @@
       "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
       "icon": "RobotIcon",
       "channels": {
-        "latest": "1.1.1"
+        "latest": "1.1.2"
       },
       "versions": {
         "1.0.1": {
@@ -167,6 +167,19 @@
           "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.clyde-editor@1.1.1.zip",
           "sha256": "4724accf7af7d21623afaf16048af5b22079758d774d4cf2690693e2655c0d51",
           "size": 3483,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.1.2": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.clyde-editor@1.1.2.zip",
+          "sha256": "5848560bb1253fa927467ab678e345ac75e613157f0eecbd13f78a309a98c1ba",
+          "size": 3581,
           "dependencies": {
             "revenge.api": {
               "version": ">=1.2.1 <2"
