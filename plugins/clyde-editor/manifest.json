@@ -4,8 +4,8 @@
 	"name": "Clyde Editor",
 	"description": "Change Clyde's name, profile picture and banner.",
 	"author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
-	"icon": "ClydeIcon",
-	"version": "1.0.3",
+	"icon": "RobotIcon",
+	"version": "1.0.4",
 	"dependencies": {
 		"revenge.api": {
 			"version": ">=1.2.1 <2"
