@@ -33,10 +33,13 @@ const renamed = new Map<any, { username: unknown; globalName: unknown }>()
 
 // A minimal profile for an account that has none in the store, so the profile
 // screen has something to draw a banner from.
+// True if the account has a banner or bio to show.
+const wants = (id?: string) => id === TARGET_ID && Boolean(getBanner(id) || getBio())
+
 function standInProfile(id: string) {
 	return {
 		userId: id,
-		banner: PLACEHOLDER_HASH,
+		banner: getBanner(id) ? PLACEHOLDER_HASH : undefined,
 		bio: '',
 		accentColor: null,
 		themeColors: undefined,
@@ -53,13 +56,23 @@ function patchDisplayProfile(profile: any, userId?: string) {
 	if (!profile || typeof profile !== 'object' || patchedProfiles.has(profile)) return
 
 	const id = userId ?? profile.userId
-	if (!id || !getBanner(id)) return
+	if (!id || !wants(id)) return
 	patchedProfiles.add(profile)
 
 	const originalGetBannerURL = profile.getBannerURL
 	let banner = profile.banner
+	let bio = profile.bio
 
 	try {
+		Object.defineProperty(profile, 'bio', {
+			get: () => (id === TARGET_ID && getBio()) || bio,
+			set: value => {
+				bio = value
+			},
+			configurable: true,
+			enumerable: true,
+		})
+
 		Object.defineProperty(profile, 'banner', {
 			get: () => (getBanner(id) ? banner || PLACEHOLDER_HASH : banner),
 			set: value => {
@@ -142,6 +155,8 @@ function patchModule(
 const idOf = (arg: any): string | undefined =>
 	typeof arg === 'string' ? arg : (arg?.id ?? arg?.userId)
 
+let loggedTag = false
+
 // The badge expects native color numbers, not hex strings.
 function toNative(hex: string): number | undefined {
 	try {
@@ -195,6 +210,11 @@ function patchMessages(cleanup: Register) {
 						instead(exports, 'default', (args: any[], original: Original) => {
 							const result = original(...args)
 							if (!isTarget(args)) return result
+
+							if (!loggedTag) {
+								loggedTag = true
+								console.log('[clyde-editor] badge fields:', JSON.stringify(result))
+							}
 
 							const text = getBadgeText()
 							const bg = getBadgeBgColor()
@@ -266,7 +286,7 @@ export function applyPatches(getStore: GetStore, cleanup: Register) {
 							}
 
 							const id = arg.user?.id ?? arg.userId
-							return getBanner(id) ? { ...arg, displayProfile: standInProfile(id) } : arg
+							return wants(id) ? { ...arg, displayProfile: standInProfile(id) } : arg
 						}),
 					),
 				)
@@ -289,8 +309,9 @@ export function applyPatches(getStore: GetStore, cleanup: Register) {
 					cleanup(
 						instead(store, key, (args: any[], original: Original) => {
 							const profile = original(...args)
-							if (args[0] !== TARGET_ID || !getBanner(TARGET_ID)) return profile
+							if (args[0] !== TARGET_ID || !wants(TARGET_ID)) return profile
 							if (!profile && key === 'getUserProfile') return standInProfile(TARGET_ID)
+							patchDisplayProfile(profile, TARGET_ID)
 							return addPlaceholderBanner(profile, TARGET_ID)
 						}),
 					)
