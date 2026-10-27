@@ -93,8 +93,9 @@
       "name": "Clyde Editor",
       "description": "Change Clyde's name, profile picture and banner.",
       "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
+      "icon": "ClydeIcon",
       "channels": {
-        "latest": "1.0.2"
+        "latest": "1.0.3"
       },
       "versions": {
         "1.0.1": {
@@ -122,6 +123,19 @@
               "version": "*"
             }
           }
+        },
+        "1.0.3": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.clyde-editor@1.0.3.zip",
+          "sha256": "43813f2b81085a46876e0de38af390846178fc12e5c3fd5701a35db69287aede",
+          "size": 2125,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
         }
       }
     },
@@ -129,8 +143,9 @@
       "name": "CopyStatus",
       "description": "Long-press a user's custom status on their profile to select and copy the text.",
       "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
+      "icon": "PencilIcon",
       "channels": {
-        "latest": "1.0.3"
+        "latest": "1.0.4"
       },
       "versions": {
         "1.0.2": {
@@ -158,6 +173,19 @@
               "version": "*"
             }
           }
+        },
+        "1.0.4": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.copystatus@1.0.4.zip",
+          "sha256": "8ee8ac763c67eb53d628e8ac0d6374ade6f4ca8f08a99b09836df91b0b4fbb51",
+          "size": 1049,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
         }
       }
     },
@@ -165,8 +193,9 @@
       "name": "Discord Editor",
       "description": "Change the official Discord account's name, profile picture and banner.",
       "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
+      "icon": "DiscordIcon",
       "channels": {
-        "latest": "1.0.2"
+        "latest": "1.0.3"
       },
       "versions": {
         "1.0.1": {
@@ -194,6 +223,19 @@
               "version": "*"
             }
           }
+        },
+        "1.0.3": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.discord-editor@1.0.3.zip",
+          "sha256": "3f3a14fd5c163efe766c83b1a216ae4405c72d9b67cbc20ee3b8f1de65f3aacc",
+          "size": 2177,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
         }
       }
     },
@@ -201,8 +243,9 @@
       "name": "HideMessages",
       "description": "Temporarily hide messages until you restart.",
       "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
+      "icon": "EyeIcon",
       "channels": {
-        "latest": "1.0.1"
+        "latest": "1.0.2"
       },
       "versions": {
         "1.0.0": {
@@ -222,6 +265,19 @@
           "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.hide-messages@1.0.1.zip",
           "sha256": "b9f678675900b89ec14ff796658e80c5c737a38c4775aa60e9645afaf23e8803",
           "size": 1899,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.2": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.hide-messages@1.0.2.zip",
+          "sha256": "863f4873723e3436dcc9ab9bc54978e1277aac51627055f261d64c60febe717b",
+          "size": 1909,
           "dependencies": {
             "revenge.api": {
               "version": ">=1 <2"
