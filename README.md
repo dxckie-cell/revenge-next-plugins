@@ -21,7 +21,7 @@ Then install the plugins you want and reload Revenge.
 | Override User Banners | `dxckie.override-user-banners` | Set a custom profile banner for any Discord user. |
 | Override Server Appearance | `dxckie.override-server-appearance` | Set a custom icon and banner for any Discord server, only on your device. |
 | Discord Editor | `dxckie.discord-editor` | Change the official Discord account's name, profile picture and banner. |
-| Clyde Editor | `dxckie.clyde-editor` | Change Clyde's name, picture, banner, name color, bot badge and bio. |
+| Clyde Editor | `dxckie.clyde-editor` | Change Clyde's name, picture, banner, name color and bot badge. |
 | Local Pins | `dxckie.local-pins` | Pin messages locally and browse them in a channel's Pins tab. |
 
 ## Development

@@ -9,7 +9,6 @@ import {
 	getBadgeText,
 	getBadgeTextColor,
 	getBanner,
-	getBio,
 	getName,
 	getNameColor,
 	getVerified,
@@ -33,13 +32,13 @@ const renamed = new Map<any, { username: unknown; globalName: unknown }>()
 
 // A minimal profile for an account that has none in the store, so the profile
 // screen has something to draw a banner from.
-// True if the account has a banner or bio to show.
-const wants = (id?: string) => id === TARGET_ID && Boolean(getBanner(id) || getBio())
+// True if the account has a banner to show.
+const wants = (id?: string) => id === TARGET_ID && Boolean(getBanner(id))
 
 function standInProfile(id: string) {
 	return {
 		userId: id,
-		banner: getBanner(id) ? PLACEHOLDER_HASH : undefined,
+		banner: PLACEHOLDER_HASH,
 		bio: '',
 		accentColor: null,
 		themeColors: undefined,
@@ -61,18 +60,8 @@ function patchDisplayProfile(profile: any, userId?: string) {
 
 	const originalGetBannerURL = profile.getBannerURL
 	let banner = profile.banner
-	let bio = profile.bio
 
 	try {
-		Object.defineProperty(profile, 'bio', {
-			get: () => (id === TARGET_ID && getBio()) || bio,
-			set: value => {
-				bio = value
-			},
-			configurable: true,
-			enumerable: true,
-		})
-
 		Object.defineProperty(profile, 'banner', {
 			get: () => (getBanner(id) ? banner || PLACEHOLDER_HASH : banner),
 			set: value => {
@@ -155,8 +144,6 @@ function patchModule(
 const idOf = (arg: any): string | undefined =>
 	typeof arg === 'string' ? arg : (arg?.id ?? arg?.userId)
 
-let loggedTag = false
-
 // The badge expects native color numbers, not hex strings.
 function toNative(hex: string): number | undefined {
 	try {
@@ -210,11 +197,6 @@ function patchMessages(cleanup: Register) {
 						instead(exports, 'default', (args: any[], original: Original) => {
 							const result = original(...args)
 							if (!isTarget(args)) return result
-
-							if (!loggedTag) {
-								loggedTag = true
-								console.log('[clyde-editor] badge fields:', JSON.stringify(result))
-							}
 
 							const text = getBadgeText()
 							const bg = getBadgeBgColor()

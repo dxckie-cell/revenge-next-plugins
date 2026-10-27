@@ -85,13 +85,10 @@ function Preview({ values }: { values: Settings }) {
 						backgroundColor: badgeBg,
 					}}
 				>
-					{values.verified && <Text style={{ color: badgeFg, fontSize: 11 }}>✓</Text>}
+					{values.verified && <Text style={{ color: '#FFFFFF', fontSize: 11 }}>✓</Text>}
 					<Text style={{ color: badgeFg, fontSize: 11, fontWeight: '700' }}>{badgeText}</Text>
 				</View>
 			</View>
-			<Text style={{ color: '#DBDEE1', marginTop: 4 }}>
-				{values.bio.trim() || PREVIEW_DEFAULTS.bio}
-			</Text>
 		</View>
 	)
 }
@@ -182,14 +179,8 @@ export const SettingsComponent: PluginSettingsComponent<{ jsonStorage: Settings 
 					/>
 				</Design.TableRowGroup>
 
-				<Design.TableRowGroup title="About me">
-					<Design.TextInput
-						label="Bio / description"
-						placeholder={PREVIEW_DEFAULTS.bio}
-						value={values.bio}
-						onChange={change('bio')}
-					/>
-					<Design.TableRow label="Leave a field empty to keep Clyde's default." />
+				<Design.TableRowGroup title="Notes">
+					<Design.TableRow label="Leave a field empty to keep Clyde's default. The verified checkmark is always white." />
 				</Design.TableRowGroup>
 			</Page>
 		</ScrollView>

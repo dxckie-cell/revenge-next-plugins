@@ -16,7 +16,6 @@ export interface Settings {
 	badgeBgColor: string
 	badgeTextColor: string
 	verified: boolean
-	bio: string
 }
 
 // Empty means "leave Discord's default"; the shown defaults are only for the preview.
@@ -29,7 +28,6 @@ export const DEFAULT_SETTINGS: Settings = {
 	badgeBgColor: '',
 	badgeTextColor: '',
 	verified: false,
-	bio: '',
 }
 
 export const PREVIEW_DEFAULTS = {
@@ -38,7 +36,6 @@ export const PREVIEW_DEFAULTS = {
 	badgeText: 'APP',
 	badgeBgColor: '#ED4245',
 	badgeTextColor: '#FFFFFF',
-	bio: "I'm your friendly Discord bot companion!",
 }
 
 export const HEX = /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/
@@ -72,6 +69,5 @@ export const getNameColor = () => readColor('nameColor')
 export const getBadgeBgColor = () => readColor('badgeBgColor')
 export const getBadgeTextColor = () => readColor('badgeTextColor')
 export const getBadgeText = () => read('badgeText')
-export const getBio = () => read('bio')
 export const getVerified = () =>
 	(storage?.cache as Partial<Settings> | undefined)?.verified === true
