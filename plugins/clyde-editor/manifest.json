@@ -1,0 +1,19 @@
+{
+	"format": 1,
+	"id": "dxckie.clyde-editor",
+	"name": "Clyde Editor",
+	"description": "Change Clyde's name, profile picture and banner.",
+	"author": "dxckie cell (https://github.com/dxckie-cell \"GitHub\")",
+	"version": "1.0.1",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1.2.1 <2"
+		},
+		"discord": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js"
+	}
+}
