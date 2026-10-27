@@ -43,13 +43,9 @@
       "name": "BetterInvites",
       "description": "See invites expiration date, view inviter profile and preview servers before joining. Long-press a message with an invite link and tap Invite info.",
       "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
-      "contributors": [
-        "iamme",
-        "thororen"
-      ],
       "icon": "LinkIcon",
       "channels": {
-        "latest": "1.0.2"
+        "latest": "1.0.3"
       },
       "versions": {
         "1.0.1": {
@@ -69,6 +65,19 @@
           "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.better-invites@1.0.2.zip",
           "sha256": "e7ef1c98bd03f1ec77ef7efa3cf2b9ba12feac170438fcb7f8fb006a585b2fab",
           "size": 2691,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.3": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.better-invites@1.0.3.zip",
+          "sha256": "2079fce7c172001e3c6f1b03ad84c61dd00dc959201fe3256881083a2e9a5759",
+          "size": 2662,
           "dependencies": {
             "revenge.api": {
               "version": ">=1.2.1 <2"
