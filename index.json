@@ -93,9 +93,9 @@
       "name": "Clyde Editor",
       "description": "Change Clyde's name, profile picture and banner.",
       "author": "dxckie (https://github.com/dxckie-cell \"GitHub\")",
-      "icon": "ClydeIcon",
+      "icon": "RobotIcon",
       "channels": {
-        "latest": "1.0.3"
+        "latest": "1.0.4"
       },
       "versions": {
         "1.0.1": {
@@ -128,6 +128,19 @@
           "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.clyde-editor@1.0.3.zip",
           "sha256": "43813f2b81085a46876e0de38af390846178fc12e5c3fd5701a35db69287aede",
           "size": 2125,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.4": {
+          "url": "https://dxckie-cell.github.io/revenge-next-plugins/pool/dxckie.clyde-editor@1.0.4.zip",
+          "sha256": "cae7fe3413f251c743e3997a63ba684094b3a1ceb684053661c871e5a26e071d",
+          "size": 2128,
           "dependencies": {
             "revenge.api": {
               "version": ">=1.2.1 <2"
