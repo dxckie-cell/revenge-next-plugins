@@ -1,7 +1,20 @@
 import { getModules } from '@revenge-mod/modules/finders'
 import { withProps } from '@revenge-mod/modules/finders/filters'
 import { before, instead } from '@revenge-mod/patcher'
-import { getAvatar, getBanner, getName, PLACEHOLDER_HASH, TARGET_ID } from './state'
+import { processColor } from 'react-native'
+import { getModuleWithImportedPath } from '@revenge-mod/discord/utils/modules/finders'
+import {
+	getAvatar,
+	getBadgeBgColor,
+	getBadgeText,
+	getBadgeTextColor,
+	getBanner,
+	getName,
+	getNameColor,
+	getVerified,
+	PLACEHOLDER_HASH,
+	TARGET_ID,
+} from './state'
 
 type Cleanup = () => unknown
 type Register = (...fns: Cleanup[]) => void
@@ -19,6 +32,9 @@ const renamed = new Map<any, { username: unknown; globalName: unknown }>()
 
 // A minimal profile for an account that has none in the store, so the profile
 // screen has something to draw a banner from.
+// True if the account has a banner to show.
+const wants = (id?: string) => id === TARGET_ID && Boolean(getBanner(id))
+
 function standInProfile(id: string) {
 	return {
 		userId: id,
@@ -39,7 +55,7 @@ function patchDisplayProfile(profile: any, userId?: string) {
 	if (!profile || typeof profile !== 'object' || patchedProfiles.has(profile)) return
 
 	const id = userId ?? profile.userId
-	if (!id || !getBanner(id)) return
+	if (!id || !wants(id)) return
 	patchedProfiles.add(profile)
 
 	const originalGetBannerURL = profile.getBannerURL
@@ -128,6 +144,83 @@ function patchModule(
 const idOf = (arg: any): string | undefined =>
 	typeof arg === 'string' ? arg : (arg?.id ?? arg?.userId)
 
+// The badge expects native color numbers, not hex strings.
+function toNative(hex: string): number | undefined {
+	try {
+		const value = processColor(hex)
+		return typeof value === 'number' ? value : undefined
+	} catch {
+		return undefined
+	}
+}
+
+// True if any argument looks like a message or author belonging to the account.
+function isTarget(args: any[]): boolean {
+	return args.some(
+		a =>
+			a &&
+			typeof a === 'object' &&
+			(a.authorId === TARGET_ID ||
+				a.id === TARGET_ID ||
+				a.author?.id === TARGET_ID ||
+				a.message?.author?.id === TARGET_ID ||
+				a.message?.authorId === TARGET_ID),
+	)
+}
+
+// Name color and the bot badge shown on the account's chat messages.
+function patchMessages(cleanup: Register) {
+	cleanup(
+		getModuleWithImportedPath<any>('modules/messages/useMessageAuthor.tsx', exports => {
+			try {
+				cleanup(
+					instead(exports, 'getMessageAuthor', (args: any[], original: Original) => {
+						const result = original(...args)
+						const color = getNameColor()
+						return color && result && isTarget(args)
+							? { ...result, colorString: color }
+							: result
+					}),
+				)
+			} catch (e) {
+				console.log('[discord-editor] could not patch message authors', e)
+			}
+		}),
+	)
+
+	cleanup(
+		getModuleWithImportedPath<any>(
+			'modules/messages/native/renderer/getTagProperties.tsx',
+			exports => {
+				try {
+					cleanup(
+						instead(exports, 'default', (args: any[], original: Original) => {
+							const result = original(...args)
+							if (!isTarget(args)) return result
+
+							const text = getBadgeText()
+							const bg = getBadgeBgColor()
+							const fg = getBadgeTextColor()
+							const verified = getVerified()
+							if (!text && !bg && !fg && !verified) return result
+
+							return {
+								...result,
+								...(text && { tagText: text, tagAccessibilityLabel: text }),
+								...(bg && toNative(bg) !== undefined && { tagBackgroundColor: toNative(bg) }),
+								...(fg && toNative(fg) !== undefined && { tagTextColor: toNative(fg) }),
+								...(verified && { tagVerified: true }),
+							}
+						}),
+					)
+				} catch (e) {
+					console.log('[discord-editor] could not patch the bot badge', e)
+				}
+			},
+		),
+	)
+}
+
 export function applyPatches(getStore: GetStore, cleanup: Register) {
 	// The user store: renames the account and gives it a placeholder banner.
 	cleanup(
@@ -175,7 +268,7 @@ export function applyPatches(getStore: GetStore, cleanup: Register) {
 							}
 
 							const id = arg.user?.id ?? arg.userId
-							return getBanner(id) ? { ...arg, displayProfile: standInProfile(id) } : arg
+							return wants(id) ? { ...arg, displayProfile: standInProfile(id) } : arg
 						}),
 					),
 				)
@@ -198,8 +291,9 @@ export function applyPatches(getStore: GetStore, cleanup: Register) {
 					cleanup(
 						instead(store, key, (args: any[], original: Original) => {
 							const profile = original(...args)
-							if (args[0] !== TARGET_ID || !getBanner(TARGET_ID)) return profile
+							if (args[0] !== TARGET_ID || !wants(TARGET_ID)) return profile
 							if (!profile && key === 'getUserProfile') return standInProfile(TARGET_ID)
+							patchDisplayProfile(profile, TARGET_ID)
 							return addPlaceholderBanner(profile, TARGET_ID)
 						}),
 					)
@@ -209,6 +303,8 @@ export function applyPatches(getStore: GetStore, cleanup: Register) {
 			}
 		}),
 	)
+
+	patchMessages(cleanup)
 
 	cleanup(() => {
 		for (const [target, original] of injected) {

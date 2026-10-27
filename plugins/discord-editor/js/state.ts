@@ -11,9 +11,34 @@ export interface Settings {
 	name: string
 	avatar: string
 	banner: string
+	nameColor: string
+	badgeText: string
+	badgeBgColor: string
+	badgeTextColor: string
+	verified: boolean
 }
 
-export const DEFAULT_SETTINGS: Settings = { name: '', avatar: '', banner: '' }
+// Empty means "leave Discord's default"; the shown defaults are only for the preview.
+export const DEFAULT_SETTINGS: Settings = {
+	name: '',
+	avatar: '',
+	banner: '',
+	nameColor: '',
+	badgeText: '',
+	badgeBgColor: '',
+	badgeTextColor: '',
+	verified: false,
+}
+
+export const PREVIEW_DEFAULTS = {
+	name: 'Discord',
+	nameColor: '#ED4245',
+	badgeText: 'APP',
+	badgeBgColor: '#ED4245',
+	badgeTextColor: '#FFFFFF',
+}
+
+export const HEX = /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/
 
 let storage: JsonStorage<Settings> | undefined
 
@@ -22,7 +47,7 @@ export function setStorage(value: JsonStorage<Settings> | undefined) {
 }
 
 // Looked up at call time, so edits in settings apply without reloading.
-function read(key: keyof Settings): string | undefined {
+function read(key: Exclude<keyof Settings, 'verified'>): string | undefined {
 	const value = (storage?.cache as Partial<Settings> | undefined)?.[key]
 	return typeof value === 'string' && value.trim() ? value.trim() : undefined
 }
@@ -34,3 +59,15 @@ export const getAvatar = () => read('avatar')
 export function getBanner(userId?: string): string | undefined {
 	return userId === TARGET_ID ? read('banner') : undefined
 }
+
+const readColor = (key: 'nameColor' | 'badgeBgColor' | 'badgeTextColor') => {
+	const value = read(key)
+	return value && HEX.test(value) ? value : undefined
+}
+
+export const getNameColor = () => readColor('nameColor')
+export const getBadgeBgColor = () => readColor('badgeBgColor')
+export const getBadgeTextColor = () => readColor('badgeTextColor')
+export const getBadgeText = () => read('badgeText')
+export const getVerified = () =>
+	(storage?.cache as Partial<Settings> | undefined)?.verified === true
