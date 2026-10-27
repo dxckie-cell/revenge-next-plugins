@@ -43,6 +43,4 @@ bunx biome check plugins scripts
 
 Bump `version` in a plugin's `plugins/<name>/manifest.json` and push to `main`. The Release workflow builds the plugin, publishes it to the `gh-pages` pool and redeploys the repository index.
 
-Original standalone repositories: [Better-Invites](https://github.com/dxckie-cell/Better-Invites), [Copy-Status](https://github.com/dxckie-cell/Copy-Status), [Hide-Messages](https://github.com/dxckie-cell/Hide-Messages), [Override-User-Avatars](https://github.com/dxckie-cell/Override-User-Avatars), [Override-User-Banners](https://github.com/dxckie-cell/Override-User-Banners), [Override-Server-Appearance](https://github.com/dxckie-cell/Override-Server-Appearance), [Discord-Editor](https://github.com/dxckie-cell/Discord-Editor), [Local-Pins](https://github.com/dxckie-cell/Local-Pins), [Clyde-Editor](https://github.com/dxckie-cell/Clyde-Editor).
-
 Licensed under GPL-3.0.
